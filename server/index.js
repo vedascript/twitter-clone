@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const userController = require("./controllers/user");
+const tweetController = require("./controllers/tweet");
 
 const app = express();
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/user", userController);
+app.use("/tweet", tweetController);
 
 app.get("/", async (req, res) => {
   res.send("hey");

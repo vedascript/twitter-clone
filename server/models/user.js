@@ -5,7 +5,7 @@ const user = Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
   profile_pic: { type: String, required: false },
-  followers: [{ type: String, default: [] }],
+  following: [{ type: String, default: [] }],
 });
 
 module.exports = model("User", user);

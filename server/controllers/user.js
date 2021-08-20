@@ -21,4 +21,18 @@ router.post("/login", async (req, res) => {
   else return res.status(404).json({ msg: "wrong credentials" });
 });
 
+//put request for adding following in user's model
+router.patch("/:id", async (req, res) => {
+  let following = req.query.following;
+  let id = req.params.id;
+  console.log(id);
+  const user = await User.findByIdAndUpdate(
+    id,
+    { $addToSet: { following } },
+    { new: true }
+  );
+  console.log(user);
+  res.status(201).json(user);
+});
+
 module.exports = router;
